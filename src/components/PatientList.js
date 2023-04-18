@@ -1,16 +1,27 @@
 import React from "react"
+import Patient from "./Patient";
 
-function PatientList() {
+function PatientList({ patients }) {
+    const allPatients = patients.map((patient) => {
+      return <Patient key={patient.id} 
+      id={patient.id} 
+      name={patient.name} 
+      sideEffects={patient.side_effects}
+      deceased={patient.deceased}/>
+    })
+
     return(
       <table>
-          <tbody>
+          <thead>
             <tr>
-                <th></th>
                 <th>Patient ID</th>
                 <th>Patient Name</th>
                 <th>Noted Side Effects</th>
+                <th>Living?</th>
             </tr>
-            {/* Create <Patient/> components here. */}
+          </thead>
+          <tbody>
+            {allPatients}
           </tbody>
       </table>  
     );
