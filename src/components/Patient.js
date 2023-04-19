@@ -16,7 +16,7 @@ function Patient({ id, name, sideEffects, deceased }) {
         })
         .then(res => res.json())
         .then(data => console.log(data))
-        .then(setIsDead(!isDead))
+        .then(setIsDead(!isDead)) //update frontend after promise returns
     }
 
   return (

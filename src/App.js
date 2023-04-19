@@ -6,6 +6,7 @@ import PatientList from './components/PatientList';
 
 function App() {
   const [patients, setPatients] = useState([])
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
     fetch('http://localhost:3000/patients')
@@ -19,10 +20,10 @@ function App() {
 
   return (
     <div className="root">
-      <Header/>
+      <Header onSetSearch={setSearch}/>
       <div className="content">
         <NewPatientForm onAddPatient={handleAddPatient}/>
-        <PatientList patients={patients}/>
+        <PatientList patients={patients} search={search}/>
       </div>
     </div>
   );

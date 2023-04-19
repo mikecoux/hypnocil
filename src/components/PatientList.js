@@ -1,8 +1,10 @@
 import React from "react"
 import Patient from "./Patient";
 
-function PatientList({ patients }) {
-    const allPatients = patients.map((patient) => {
+function PatientList({ patients, search }) {
+    const allPatients = patients
+    .filter((patient) => patient.name.toLowerCase().startsWith(search.toLowerCase()) || patient.side_effects.toString().toLowerCase().includes(search.toLowerCase()))
+    .map((patient) => {
       return <Patient key={patient.id} 
       id={patient.id} 
       name={patient.name} 
